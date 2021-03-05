@@ -36,8 +36,8 @@ docker-compose up -d
 
 And that's it. You will have your Elasticsearch and Kibana ready at:
 
-- Elasticsearch: https://<DOMAIN_OR_PUBLIC_IP>/
-- Kibana: https://<DOMAIN_OR_PUBLIC_IP>/kibana
+- Elasticsearch: `https://<DOMAIN_OR_PUBLIC_IP>/`
+- Kibana: `https://<DOMAIN_OR_PUBLIC_IP>/kibana`
 
 # Configure it for OpenVidu
 
