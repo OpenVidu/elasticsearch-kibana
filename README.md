@@ -1,6 +1,6 @@
 # Elasticsearch and Kibana
 
-This is an easy to deploy Elasticsearch and Kibana ready to work for OpenVidu.
+This is an easy to deploy Elasticsearch and Kibana ready to work for OpenVidu Pro.
 
 # Prerequesites
 
