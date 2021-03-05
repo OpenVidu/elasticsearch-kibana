@@ -43,7 +43,9 @@ And that's it. You will have your Elasticsearch and Kibana ready at:
 
 You just need to add/modify this properties in your OpenVidu installation at `/opt/openvidu/.env`:
 
+```
 OPENVIDU_PRO_ELASTICSEARCH_HOST=https://<DOMAIN_OR_PUBLIC_IP>:443/
 OPENVIDU_PRO_KIBANA_HOST=https://<DOMAIN_OR_PUBLIC_IP>:443/kibana/
 ELASTICSEARCH_USERNAME=<ELASTICSEARCH_USERNAME>
 ELASTICSEARCH_PASSWORD=<ELASTICSEARCH_PASSWORD>
+```
