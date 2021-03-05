@@ -1,22 +1,3 @@
-# ------------------------------------------------------------------------------
-#
-#    DO NOT MODIFY THIS FILE !!!
-#
-#    Configuration properties should be specified in .env file
-#
-#    Application based on OpenVidu should be specified in
-#    docker-compose.override.yml file
-#
-#    This docker-compose file coordinates all services of OpenVidu Pro Platform
-#
-#    This file will be overridden when update OpenVidu Platform
-#
-#    Openvidu Version: 2.17.0
-#
-#    Installation Mode: On Premises
-#
-# ------------------------------------------------------------------------------
-
 version: '3.1'
 
 services:
@@ -24,7 +5,7 @@ services:
     init-elasticsearch:
         image: registry.hub.docker.com/library/busybox:latest
         command: >
-            sh -c mkdir -p /usr/share/elasticsearch/data && chown 1000:1000 /usr/share/elasticsearch/data
+            sh -c "mkdir -p /usr/share/elasticsearch/data && chown 1000:1000 /usr/share/elasticsearch/data"
         volumes: 
             - ./elasticsearch:/usr/share/elasticsearch/data
 
@@ -46,8 +27,8 @@ services:
             - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
             - PUBLIC_IP=${PROXY_PUBLIC_IP:-auto-ipv4}
         command: >
-            bash -c "sed -i \"s/DOMAIN_OR_PUBLIC_IP/${DOMAIN_OR_PUBLIC_IP}/g\" /tmp/custom-nginx.conf.template && 
-            cp /tmp/custom-nginx.conf.template /custom-nginx/custom-nginx.conf &&
+            bash -c "sed \"s/DOMAIN_OR_PUBLIC_IP/${DOMAIN_OR_PUBLIC_IP}/g\" /tmp/custom-nginx.conf.template > /tmp/custom-nginx.conf && 
+            mv /tmp/custom-nginx.conf /custom-nginx/custom-nginx.conf &&
             /usr/local/bin/entrypoint.sh"
         logging:
             options:
