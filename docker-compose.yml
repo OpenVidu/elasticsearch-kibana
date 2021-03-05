@@ -38,13 +38,17 @@ services:
             - ./certificates:/etc/letsencrypt
             - ./owncert:/owncert
             - ./custom-nginx-vhosts:/etc/nginx/vhost.d/
-            - ./custom-nginx.conf:/custom-nginx/custom-nginx.conf
+            - ./custom-nginx.conf.template:/tmp/custom-nginx.conf.template
             - ./nginx.conf:/etc/nginx/nginx.conf
         environment:
             - DOMAIN_OR_PUBLIC_IP=${DOMAIN_OR_PUBLIC_IP}
             - CERTIFICATE_TYPE=${CERTIFICATE_TYPE}
             - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
             - PUBLIC_IP=${PROXY_PUBLIC_IP:-auto-ipv4}
+        command: >
+            bash -c "sed -i \"s/DOMAIN_OR_PUBLIC_IP/${DOMAIN_OR_PUBLIC_IP}/g\" /tmp/custom-nginx.conf.template && 
+            cp /tmp/custom-nginx.conf.template /custom-nginx/custom-nginx.conf &&
+            /usr/local/bin/entrypoint.sh"
         logging:
             options:
                 max-size: "${DOCKER_LOGS_MAX_SIZE:-100M}"

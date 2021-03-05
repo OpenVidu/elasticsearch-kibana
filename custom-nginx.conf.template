@@ -12,14 +12,14 @@ upstream elasticsearch {
 
 server {
     # Redirect to https
-    if ($host = elasticsearch.openvidu.io) {
-        rewrite ^(.*) https://elasticsearch.openvidu.io:443$1 permanent;
+    if ($host = DOMAIN_OR_PUBLIC_IP) {
+        rewrite ^(.*) https://DOMAIN_OR_PUBLIC_IP:443$1 permanent;
     } # managed by Certbot
     
 
     listen 80 default_server;
     listen [::]:80 default_server;
-    server_name elasticsearch.openvidu.io;
+    server_name DOMAIN_OR_PUBLIC_IP;
 
     # letsencrypt
     location /.well-known/acme-challenge {
@@ -44,12 +44,12 @@ server {
 server {
     listen 443 ssl default deferred;
     listen [::]:443 ssl default deferred;
-    server_name elasticsearch.openvidu.io;
+    server_name DOMAIN_OR_PUBLIC_IP;
 
     # SSL Config
-    ssl_certificate         /etc/letsencrypt/live/elasticsearch.openvidu.io/fullchain.pem;
-    ssl_certificate_key     /etc/letsencrypt/live/elasticsearch.openvidu.io/privkey.pem;
-    ssl_trusted_certificate /etc/letsencrypt/live/elasticsearch.openvidu.io/fullchain.pem;
+    ssl_certificate         /etc/letsencrypt/live/DOMAIN_OR_PUBLIC_IP/fullchain.pem;
+    ssl_certificate_key     /etc/letsencrypt/live/DOMAIN_OR_PUBLIC_IP/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/DOMAIN_OR_PUBLIC_IP/fullchain.pem;
 
     ssl_session_cache shared:SSL:50m;
     ssl_session_timeout 5m;
