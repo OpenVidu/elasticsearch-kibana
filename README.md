@@ -20,7 +20,7 @@ git clone https://github.com/OpenVidu/elasticsearch-kibana.git
 
 - `DOMAIN_OR_PUBLIC_IP`: Domain or public IP where your installing Elasticsearch and Kibana.
 - `CERTIFICATE_TYPE`: The type of certificate you want to use:
-    - `selfsigned`: Self signed certificate. Not recommended for production use. Users will see an ERROR when connected to web page.
+    - `selfsigned`: Self signed certificate. **Not recommended**. OpenVidu Pro will not connect to selfsigned certificates. You need a valid certificate with `letsencrypt` or your own certificate. 
     - `letsencrypt`: Generate a new certificate using letsencrypt. Please set the required contact email for Let's Encrypt in `LETSENCRYPT_EMAIL` variable. 
     You need also a FQDN (Fully Qualified Domain Name) for letsencrypt to work properly.
     - `owncert`: Valid certificate purchased in a Internet services company. Please put the certificates files inside folder `./owncert` with names `certificate.key` and `certificate.cert`.
