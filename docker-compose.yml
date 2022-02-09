@@ -36,7 +36,7 @@ services:
 
 
     elasticsearch:
-        image: openvidu/elasticsearch:7.8.0
+        image: openvidu/openvidu-elasticsearch:7.8.0
         restart: always
         environment:
             - discovery.type=single-node
@@ -54,7 +54,7 @@ services:
                 max-size: "${DOCKER_LOGS_MAX_SIZE:-100M}"
 
     kibana:
-        image: openvidu/kibana:7.8.0
+        image: docker.elastic.co/kibana/kibana:7.8.0
         restart: always
         environment:
             - SERVER_BASEPATH="/kibana"
